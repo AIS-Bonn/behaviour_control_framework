@@ -32,7 +32,7 @@ DYNDIR = $(BUILDDIR)/for_dyn_lib
 ENSURE_DIR = @mkdir -p $(@D)
 
 INCLUDES = -I$(INCLUDEDIR)
-LDFLAGS = -lpthread -lgtest -lgtest_main -L../gtest
+LDFLAGS = -lpthread -lgtest -lgtest_main -L../../gtest
 
 DLIB_OBJS = $(DYNDIR)/behaviour.o $(DYNDIR)/behaviour_actuators.o $(DYNDIR)/behaviour_common.o $(DYNDIR)/behaviour_control.o $(DYNDIR)/behaviour_layer.o $(DYNDIR)/behaviour_manager.o $(DYNDIR)/behaviour_sensors.o
 LIB_OBJS = $(BUILDDIR)/behaviour.o $(BUILDDIR)/behaviour_actuators.o $(BUILDDIR)/behaviour_common.o $(BUILDDIR)/behaviour_control.o $(BUILDDIR)/behaviour_layer.o $(BUILDDIR)/behaviour_manager.o $(BUILDDIR)/behaviour_sensors.o
