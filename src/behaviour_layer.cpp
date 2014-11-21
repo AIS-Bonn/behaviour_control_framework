@@ -515,7 +515,7 @@ void BehaviourLayer::executeAll()
 	for(i = 0;i < num;i++)
 	{
 		level = BList[i]->computeActivationLevel();
-		BList[i]->rawA = ((level < 0.0) ? 0.0 : ((level > 1.0 ? 1.0 : level))); // Coerce to 0->1 range... Important!
+		BList[i]->rawA = (level_t) ((level < 0.0) ? 0.0 : ((level > 1.0 ? 1.0 : level))); // Coerce to 0->1 range... Important!
 		BList[i]->trueA = BList[i]->rawA; // Initialise trueA for the loop below
 	}
 
@@ -526,7 +526,7 @@ void BehaviourLayer::executeAll()
 		// before this j-for-loop is called for any behaviour that it inhibits. That is to say that BList[i] must come before all
 		// of the behaviours it inhibits in the list, and after all of the behaviours that inhibit it.
 		for(j = 0;j < BList[i]->inhibits.size();j++)
-			BList[i]->inhibits[j]->trueA *= (1.0 - BList[i]->trueA);
+			BList[i]->inhibits[j]->trueA *= (level_t) (1.0 - BList[i]->trueA);
 	}
 
 	// Normalise to get the true activation levels

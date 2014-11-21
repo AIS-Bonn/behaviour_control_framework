@@ -20,20 +20,29 @@
 #include <boost/type_traits.hpp> // For checking template types
 #include <boost/utility/enable_if.hpp> // For boost::enable_if
 
+// Define a macro to retrieve the executing function name
+#if defined(_MSC_VER) || (defined(__INTEL_COMPILER) && (__INTEL_COMPILER >= 600)) || (defined(__IBMCPP__) && (__IBMCPP__ >= 500))
+#define CURRENT_FUNC __FUNCTION__
+#elif defined(__GNUC__) || defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901) || (defined(__ICC) && (__ICC >= 600))
+#define CURRENT_FUNC __func__
+#else
+#define CURRENT_FUNC "<unknown>"
+#endif
+
 /**
 * @name Error Macros
 * A collection of macros that wrap the @ref behaviourcontrol::BehaviourManager::reportError "reportError()" function
 * to make shortcuts for reporting warnings, errors and making assertions.
 **/
 ///@{
-#define REPORT_ERROR(MBasePtr, msg)          (MBasePtr)->reportError((msg),true,__func__,__FILE__,__LINE__)  //!< @brief Reports a `std::string` error message @p msg to the behaviour manager pointed to by @p MBasePtr (`fatal = true`).
-#define REPORT_ERROR_(MBase, msg)            (MBase).reportError((msg),true,__func__,__FILE__,__LINE__)      //!< @brief Reports a `std::string` error message @p msg to the @p MBase behaviour manager (`fatal = true`).
-#define REPORT_WARNING(MBasePtr, msg)        (MBasePtr)->reportError((msg),false,__func__,__FILE__,__LINE__) //!< @brief Reports a `std::string` warning message @p msg to the behaviour manager pointed to by @p MBasePtr (`fatal = false`).
-#define REPORT_WARNING_(MBase, msg)          (MBase).reportError((msg),false,__func__,__FILE__,__LINE__)     //!< @brief Reports a `std::string` warning message @p msg to the @p MBase behaviour manager (`fatal = false`).
-#define ASSERT_ERROR(cond, MBasePtr, msg)    if(!(cond)) { REPORT_ERROR((MBasePtr),msg); return; }           //!< @brief Reports a `std::string` error message @p msg to the behaviour manager pointed to by @p MBasePtr if @p cond evaluates to false (`fatal = true`).
-#define ASSERT_ERROR_(cond, MBase, msg)      if(!(cond)) { REPORT_ERROR_((MBase),msg); return; }             //!< @brief Reports a `std::string` error message @p msg to the @p MBase behaviour manager if @p cond evaluates to false (`fatal = true`).
-#define ASSERT_WARNING(cond, MBasePtr, msg)  if(!(cond)) { REPORT_WARNING((MBasePtr),msg); return; }         //!< @brief Reports a `std::string` warning message @p msg to the behaviour manager pointed to by @p MBasePtr if @p cond evaluates to false (`fatal = false`).
-#define ASSERT_WARNING_(cond, MBase, msg)    if(!(cond)) { REPORT_WARNING_((MBase),msg); return; }           //!< @brief Reports a `std::string` warning message @p msg to the @p MBase behaviour manager if @p cond evaluates to false (`fatal = false`).
+#define REPORT_ERROR(MBasePtr, msg)          (MBasePtr)->reportError((msg),true,CURRENT_FUNC,__FILE__,__LINE__)  //!< @brief Reports a `std::string` error message @p msg to the behaviour manager pointed to by @p MBasePtr (`fatal = true`).
+#define REPORT_ERROR_(MBase, msg)            (MBase).reportError((msg),true,CURRENT_FUNC,__FILE__,__LINE__)      //!< @brief Reports a `std::string` error message @p msg to the @p MBase behaviour manager (`fatal = true`).
+#define REPORT_WARNING(MBasePtr, msg)        (MBasePtr)->reportError((msg),false,CURRENT_FUNC,__FILE__,__LINE__) //!< @brief Reports a `std::string` warning message @p msg to the behaviour manager pointed to by @p MBasePtr (`fatal = false`).
+#define REPORT_WARNING_(MBase, msg)          (MBase).reportError((msg),false,CURRENT_FUNC,__FILE__,__LINE__)     //!< @brief Reports a `std::string` warning message @p msg to the @p MBase behaviour manager (`fatal = false`).
+#define ASSERT_ERROR(cond, MBasePtr, msg)    if(!(cond)) { REPORT_ERROR((MBasePtr),msg); return; }               //!< @brief Reports a `std::string` error message @p msg to the behaviour manager pointed to by @p MBasePtr if @p cond evaluates to false (`fatal = true`).
+#define ASSERT_ERROR_(cond, MBase, msg)      if(!(cond)) { REPORT_ERROR_((MBase),msg); return; }                 //!< @brief Reports a `std::string` error message @p msg to the @p MBase behaviour manager if @p cond evaluates to false (`fatal = true`).
+#define ASSERT_WARNING(cond, MBasePtr, msg)  if(!(cond)) { REPORT_WARNING((MBasePtr),msg); return; }             //!< @brief Reports a `std::string` warning message @p msg to the behaviour manager pointed to by @p MBasePtr if @p cond evaluates to false (`fatal = false`).
+#define ASSERT_WARNING_(cond, MBase, msg)    if(!(cond)) { REPORT_WARNING_((MBase),msg); return; }               //!< @brief Reports a `std::string` warning message @p msg to the @p MBase behaviour manager if @p cond evaluates to false (`fatal = false`).
 ///@}
 
 // Behaviour control namespace

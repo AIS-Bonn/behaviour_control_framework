@@ -10,8 +10,8 @@
 * @defgroup BehaviourControlFramework Behaviour Control Framework
 * 
 * @author Philipp Allgeuer (<pallgeuer@ais.uni-bonn.de>)
-* @date November 5, 2013
-* @version 1.0.1
+* @date November 21, 2014
+* @version 1.0.2
 *
 * @section bcfsec1 Overview
 * The Behaviour Control Framework (BC Framework) is a generic platform independent

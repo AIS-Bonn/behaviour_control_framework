@@ -221,7 +221,7 @@ void BehaviourManager::step()
 /**
 * @param msg A `std::string` message that describes the error.
 * @param fatal A flag specifying whether the error is fatal (i.e. an @e error) or non-fatal (i.e. just a @e warning).
-* @param funcName The name of the function in which the error was encountered (generally @c \__func__).
+* @param funcName The name of the function in which the error was encountered (generally @c \__func__, @c \__FUNCTION__ or similar).
 * @param fileName The name of the file in which the error was encountered (generally @c \__FILE__).
 * @param line The line number at which the error was encountered (generally @c \__LINE__).
 **/

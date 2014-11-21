@@ -232,7 +232,7 @@ namespace behaviourcontroltest
 		// Function overrides
 		virtual ret_t init() { DISPLAY(std::cout << "    Initialising class " << name << std::endl); M->initCheckSum = 4*M->initCheckSum + 1; return RET_OK; }
 		virtual void update() { DISPLAY(std::cout << "    User-updating behaviour '" << name << "'" << std::endl); }
-		virtual level_t computeActivationLevel() { return 0.6; }
+		virtual level_t computeActivationLevel() { return 0.6F; }
 		virtual void execute() { AM->vgoal.write(SM->targetX.read() + 5.0, this); AM->xgoal.write(SM->mode.read() + 3, this); DISPLAY(std::cout << "    Executing behaviour '" << name << "'" << std::endl); }
 	};
 
@@ -254,7 +254,7 @@ namespace behaviourcontroltest
 		// Function overrides
 		virtual ret_t init() { DISPLAY(std::cout << "    Initialising class " << name << std::endl); M->initCheckSum = 5*M->initCheckSum + 1; return RET_OK; }
 		virtual void update() { DISPLAY(std::cout << "    User-updating behaviour '" << name << "'" << std::endl); }
-		virtual level_t computeActivationLevel() { return 0.9; }
+		virtual level_t computeActivationLevel() { return 0.9F; }
 		virtual void execute() { AM->vgoal.write(SM->targetX.read() + 10.0, this); AM->xgoal.write(SM->mode.read() - 7, this); DISPLAY(std::cout << "    Executing behaviour '" << name << "'" << std::endl); }
 	};
 
@@ -345,7 +345,7 @@ namespace behaviourcontroltest
 		// Function overrides
 		virtual ret_t init() { DISPLAY(std::cout << "    Initialising class " << name << std::endl); M->initCheckSum = 7*M->initCheckSum + 1; return RET_OK; }
 		virtual void update() { DISPLAY(std::cout << "    User-updating behaviour '" << name << "'" << std::endl); }
-		virtual level_t computeActivationLevel() { return 0.3; }
+		virtual level_t computeActivationLevel() { return 0.3F; }
 		virtual void execute() { AM->mode.write(SM->mode.read(), this); AM->count.write(SM->xgoal.read()*2, this); AM->target.write(SM->xgoal.read() + 323, this); DISPLAY(std::cout << "    Executing behaviour '" << name << "'" << std::endl); }
 	};
 
@@ -367,7 +367,7 @@ namespace behaviourcontroltest
 		// Function overrides
 		virtual ret_t init() { DISPLAY(std::cout << "    Initialising class " << name << std::endl); M->initCheckSum = 8*M->initCheckSum + 1; return RET_OK; }
 		virtual void update() { DISPLAY(std::cout << "    User-updating behaviour '" << name << "'" << std::endl); }
-		virtual level_t computeActivationLevel() { return 0.1; }
+		virtual level_t computeActivationLevel() { return 0.1F; }
 		virtual void execute() { AM->count.write(SM->xgoal.read()*4, this); AM->target.write(SM->xgoal.read() + 176, this); DISPLAY(std::cout << "    Executing behaviour '" << name << "'" << std::endl); }
 	};
 }

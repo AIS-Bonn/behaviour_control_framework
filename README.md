@@ -2,9 +2,9 @@
 
 **Author:** Philipp Allgeuer
 
-**Version:** 1.0.1
+**Version:** 1.0.2
 
-**Date:** 05/11/13
+**Date:** 21/11/14
 
 ##General Overview##
 The Behaviour Control Framework is a generic platform-independent C++ framework that implements a control architecture consisting of a hierarchical network of behaviour layers. These layers each contain behaviours that can inhibit one another and interact to achieve control. A full discussion of the structure and ideas behind this framework can be found in the Doxygen documentation that comes with the release. This documentation is well worth a read before you decide if the library is for you!
@@ -33,7 +33,7 @@ There are three ways of using the library:
 
 Due to the rather small and efficient nature of the library, one of the first two options is recommended. Minimal benefit is expected from building a dynamic library.
 
-Note that as at release `v1.0.1`, the required (non-test) source files are:
+Note that as at release `v1.0.2`, the required (non-test) source files are:
 
 Header Files                       | Source Files
 -----------------------------------|------------------------
